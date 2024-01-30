@@ -5,12 +5,14 @@ import com.ruralHack.Controller.DTO.GuestOutput;
 import com.ruralHack.Domain.Guest;
 import com.ruralHack.Exception.AlreadyExistsException;
 import com.ruralHack.Exception.isEmptyException;
+import com.ruralHack.Exception.notExistsException;
 import com.ruralHack.Repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GuestService {
@@ -36,5 +38,8 @@ public class GuestService {
         return guestsOutput;
     }
 
-
+    public void deleteGuest(String email) throws notExistsException {
+        if(!guestRepository.existsById(email)) throw new notExistsException("Guest doesn't exist");
+        guestRepository.deleteById(email);
+    }
 }

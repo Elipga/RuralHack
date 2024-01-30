@@ -2,6 +2,7 @@ package com.ruralHack.Controller.DTO;
 
 import com.ruralHack.Exception.AlreadyExistsException;
 import com.ruralHack.Exception.isEmptyException;
+import com.ruralHack.Exception.notExistsException;
 import com.ruralHack.Service.GuestService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,14 @@ public class GuestController {
         }
     }
 
-    
+    @DeleteMapping("/guests/{email}")
+    public ResponseEntity<String> deleteGuest(@PathVariable String email){
+        try {
+            guestService.deleteGuest(email);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } catch (notExistsException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 }
