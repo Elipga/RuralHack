@@ -18,6 +18,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class GuestInput {
 
+    @NotNull(message = "Id is null")
+    @NotEmpty(message = "Id is null")
+    private String id;
     @NotNull(message = "firstName is null")
     @NotEmpty(message = "firstName is null")
     private String firstName;
@@ -26,12 +29,13 @@ public class GuestInput {
     private String lastName;
     @NotNull(message = "email is null")
     @NotEmpty(message = "email is null")
-    @Email(message = "must be a valid format for email")
+    @Email (message = "must be a valid format for email")
     private String email;
-    @Past(message = "must be a past date")
+    @Past (message = "must be a past date")
     private LocalDate birthDate;
 
-    public GuestInput(String firstName, String lastName, String email, LocalDate birthDate) {
+    public GuestInput(String id, String firstName, String lastName, String email, LocalDate birthDate) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -39,7 +43,7 @@ public class GuestInput {
     }
 
     public static Guest getGuest(GuestInput guestInput) {
-        return new Guest(guestInput.getFirstName(), guestInput.getLastName(), guestInput.getEmail(),
+        return new Guest(guestInput.getId(), guestInput.getFirstName(), guestInput.getLastName(), guestInput.getEmail(),
                 guestInput.getBirthDate());
     }
 }

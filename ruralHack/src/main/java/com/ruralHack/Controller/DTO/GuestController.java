@@ -1,8 +1,8 @@
 package com.ruralHack.Controller.DTO;
 
 import com.ruralHack.Exception.AlreadyExistsException;
-import com.ruralHack.Exception.isEmptyException;
-import com.ruralHack.Exception.notExistsException;
+import com.ruralHack.Exception.IsEmptyException;
+import com.ruralHack.Exception.NotExistsException;
 import com.ruralHack.Service.GuestService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,17 +34,27 @@ public class GuestController {
         try {
             List<GuestOutput> guestsOutput = guestService.getAllGuests();
             return ResponseEntity.ok(guestsOutput);
-        } catch (isEmptyException e) {
+        } catch (IsEmptyException e) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
     }
 
-    @DeleteMapping("/guests/{email}")
-    public ResponseEntity<String> deleteGuest(@PathVariable String email){
+    @DeleteMapping("/guests/{id}")
+    public ResponseEntity<String> deleteGuest(@PathVariable String id){
         try {
-            guestService.deleteGuest(email);
+            guestService.deleteGuest(id);
             return ResponseEntity.status(HttpStatus.OK).build();
-        } catch (notExistsException e) {
+        } catch (NotExistsException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @PutMapping("/guests/{id}")
+    public ResponseEntity<String> updateGuest(@PathVariable String id, @Valid @RequestBody GuestUpdate guestUpdate){
+        try {
+            guestService.updateGuest(id, guestUpdate);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } catch (NotExistsException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }

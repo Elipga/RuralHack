@@ -2,6 +2,7 @@ package com.ruralHack.Controller.DTO;
 
 
 import com.ruralHack.Domain.Guest;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -17,6 +18,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class GuestOutput {
 
+    @NotNull(message = "Id is null")
+    @NotEmpty(message = "Id is null")
+    private String id;
     @NotNull(message = "firstName is null")
     @NotEmpty(message = "firstName is null")
     private String firstName;
@@ -25,12 +29,14 @@ public class GuestOutput {
     private String lastName;
     @NotNull(message = "email is null")
     @NotEmpty(message = "email is null")
-    @Email(message = "must be a valid format for email")
+    @Email (message = "must be a valid format for email")
+    @Id
     private String email;
-    @Past(message = "must be a past date")
+    @Past (message = "must be a past date")
     private LocalDate birthDate;
 
-    public GuestOutput(String firstName, String lastName, String email, LocalDate birthDate) {
+    public GuestOutput(String id, String firstName, String lastName, String email, LocalDate birthDate) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -38,7 +44,7 @@ public class GuestOutput {
     }
 
     public static GuestOutput getGuest(Guest guest) {
-        return new GuestOutput(guest.getFirstName(), guest.getLastName(), guest.getEmail(),
+        return new GuestOutput(guest.getId(), guest.getFirstName(), guest.getLastName(), guest.getEmail(),
                 guest.getBirthDate());
     }
 }
