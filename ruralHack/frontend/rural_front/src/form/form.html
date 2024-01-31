@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="form.css" />
+</head>
+<body>
+<h1>Guest Form</h1>
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <form method="POST">
+            <div class="formbold-input-flex">
+                <div>
+                    <input
+                            type="text"
+                            name="firstname"
+                            id="firstname"
+                            class="formbold-form-input"
+                    />
+                    <label for="firstname" class="formbold-form-label">
+                        First name
+                    </label>
+                </div>
+                <div>
+                    <input
+                            type="text"
+                            name="lastname"
+                            id="lastname"
+                            class="formbold-form-input"
+                    />
+                    <label for="lastname" class="formbold-form-label">
+                        Last name
+                    </label>
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            class="formbold-form-input"
+                    />
+                    <label for="email" class="formbold-form-label"> Email </label>
+                </div>
+                <div>
+                    <input
+                            type="date"
+                            name="birthdate"
+                            id="birthdate"
+                            class="formbold-form-input"
+                    />
+                    <label for="birthdate" class="formbold-form-label">
+                        Birth Date
+                    </label>
+                </div>
+            </div>
+            <button id= "btnRegister" class="formbold-btn">
+                Register
+                </button>
+        </form>
+    </div>
+</div>
+<script>scr ="form.js"</script>
+</body>
+</html>
