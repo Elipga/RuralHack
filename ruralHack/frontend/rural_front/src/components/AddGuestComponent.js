@@ -1,6 +1,6 @@
 import React,  { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import GuestService from './GuestService';
+import GuestService from '../services/GuestService';
 import { Link } from 'react-router-dom';
 
 
@@ -104,7 +104,7 @@ tittle()
 </div>
 
 <div className= 'form-group mb-2'>
-<label className = 'form-label'>email Name</label>
+<label className = 'form-label'>Email</label>
 <input
                             type="text"
                             name="email"

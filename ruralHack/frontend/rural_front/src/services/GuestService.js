@@ -13,6 +13,7 @@ createGuest(guest){
 return axios.post(GUEST_BASE_REST_API_URL, guest);
 }
 
+
 getGuestById(guestId){
 return axios.get(GUEST_BASE_REST_API_URL, + '/' + guestId);
 }
@@ -24,8 +25,6 @@ return axios.put(GUEST_BASE_REST_API_URL + '/' + guestId, guest);
 deleteGuest(guestId){
 return axios.delete(GUEST_BASE_REST_API_URL + '/' + guestId);
 }
-
-
 }
 
 export default new GuestService;

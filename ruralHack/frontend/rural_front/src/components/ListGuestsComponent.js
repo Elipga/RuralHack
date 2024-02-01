@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import GuestService from './GuestService.js';
+import GuestService from '../services/GuestService.js';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -63,7 +63,7 @@ export const ListGuestsComponent = () => {
     </tbody>
 
     </table>
-     ListGuestsComponent </div>
+    </div>
   );
 };
 

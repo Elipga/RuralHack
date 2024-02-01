@@ -1,9 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import ListGuestsComponent from './ListGuestsComponent.js';
-import HeaderComponent from './HeaderComponent.js';
-import FooterComponent from './FooterComponent.js';
-import AddGuestComponent from './AddGuestComponent.js';
+import ListGuestsComponent from './components/ListGuestsComponent.js';
+import HeaderComponent from './components/HeaderComponent.js';
+import AddGuestComponent from './components/AddGuestComponent.js';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
